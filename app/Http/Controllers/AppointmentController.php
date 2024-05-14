@@ -25,6 +25,7 @@ public function appointment_store(Request $request){
         "dentist_id"=>"exists:dentist,dentist_id",
         "nurse_id"=>"exists:nurse,nurse_id",
         "user_id"=>"exists:user,user_id",
+        "procedure_id"=>"exists:procedure,procedure_id",
         "treatment_date" => "required|date",
         "treatment_time" => "required|time",
         "rescedule" => "sometimes|date"
@@ -44,6 +45,7 @@ public function appointment_store(Request $request){
         'dentist_id'=> $validated['dentist_id'],
         'nurse_id'=> $validated['nurse_id'],
         'user_id'=> $validated['user_id'],
+        'procedure_id'=> $validated['procedure_id'],
         'treatment_date'=> $validated['treatment_date'],
         'treatment_time'=> $validated['treatment_time'],
         'rescedule'=> $validated['rescedule'],
@@ -83,6 +85,7 @@ public function appointment_update(Request $request, Doctor $doctor){
         "dentist_id"=>"exists:dentist,dentist_id",
         "nurse_id"=>"exists:nurse,nurse_id",
         "user_id"=>"exists:user,user_id",
+        "procedure_id"=>"exists:procedure,procedure_id",
         "treatment_date" => "required|date",
         "treatment_time" => "required|time",
         "rescedule" => "sometimes|date"
@@ -100,6 +103,7 @@ public function appointment_update(Request $request, Doctor $doctor){
         'dentist_id'=> $validated['dentist_id'],
         'nurse_id'=> $validated['nurse_id'],
         'user_id'=> $validated['user_id'],
+        'procedure_id'=> $validated['procedure_id'],
         'treatment_date'=> $validated['treatment_date'],
         'treatment_time'=> $validated['treatment_time'],
         'rescedule'=> $validated['rescedule'],
