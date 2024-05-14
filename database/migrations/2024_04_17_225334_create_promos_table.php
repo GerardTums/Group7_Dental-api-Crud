@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->decimal('discount', 5, 2);
+            $table->string('description');
+            $table->integer('price');
+            $table->string('promo_name');
+            $table->date('promo_end');
             $table->timestamps();
-
-            /* $table->foreign('user_id')->references('profile_id')->on('profiles')->onDelete('cascade'); */
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('promos');
     }
 };

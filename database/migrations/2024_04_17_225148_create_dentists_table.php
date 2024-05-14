@@ -11,22 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('dentists', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
-
-            /* $table->foreign('user_id')->references('profile_id')->on('profiles')->onDelete('cascade'); */
-        });
-    }
-
+            $table->string('address')->unique();
+            $table->integer('years_of_service');
+            $table->date('updated_at');
+            $table->timestamp('created_at');
+          
+    });
+ }
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('dentists');
     }
 };

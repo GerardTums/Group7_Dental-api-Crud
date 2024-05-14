@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('nurses', function (Blueprint $table) {
             $table->id()->primary();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+            $table->string('address')->unique();
+            $table->integer('years_of_service');
+            $table->date('updated_at');
+            $table->timestamp('created_at');
+            
 
-            /* $table->foreign('user_id')->references('profile_id')->on('profiles')->onDelete('cascade'); */
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('nurses');
     }
 };

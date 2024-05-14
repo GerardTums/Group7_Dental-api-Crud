@@ -37,7 +37,9 @@ class UserController extends Controller
             "first_name" => "required|string|min:2",
             "middle_name" => "sometimes|string|min:2",
             "last_name" => "required|string|min:2",
-            "birth_date" => "required|date"
+            "birth_date" => "required|date",
+            "contact" => "required|string|min:11",
+            "address" => "required|string"
         ]);
 
         if($validator->fails()){

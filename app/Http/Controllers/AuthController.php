@@ -22,7 +22,9 @@ class AuthController extends Controller
             "first_name" => "required|string|min:2",
             "middle_name" => "sometimes|string|min:2",
             "last_name" => "required|string|min:2",
-            "birth_date" => "required|date"
+            "birth_date" => "required|date",
+            "contact" => "required|string|min:11",
+            "address" => "required|string"
         ]);
 
         if($validator->fails()){
@@ -39,7 +41,7 @@ class AuthController extends Controller
         $user = User::create($user_input);
         $user->profile()->create($profile_input);
         $user->profile;
-        $user->token = $user->createToken("registration_token")->accessToken; 
+        $user->token = $user->createToken("registration_token")->accessToken;
 
         return response()->json([
             "ok" => true,
