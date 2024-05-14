@@ -41,3 +41,10 @@ Route::prefix("nurses")->group(function (){
     Route::post("/", [App\Http\Controllers\NurseController::class, "nurse_store"]);
 
 });
+Route::prefix("promos")->group(function (){
+    Route::get("/", [App\Http\Controllers\PromoController::class, "promo_index"]);
+    Route::get("/{promo}", [App\Http\Controllers\PromoController::class, "promo_show"]);
+    Route::delete("/{promo}", [App\Http\Controllers\PromoController::class, "promo_destroy"]);
+    Route::patch("/{promo}", [App\Http\Controllers\PromoController::class, "promo_update"]);
+    Route::post("/", [App\Http\Controllers\PromoController::class, "promo_store"]);
+});
