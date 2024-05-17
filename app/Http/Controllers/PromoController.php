@@ -21,7 +21,7 @@ class PromoController extends Controller
     }
 public function promo_store(Request $request){
     $validator = validator($request->all(), [
-        "discount" => "required|decimal",
+        "discount" => "required",
         "description" => "required|string",
         "price" => "required|integer",
         "promo_name" => "required|string",
@@ -41,7 +41,7 @@ public function promo_store(Request $request){
     */
     $validated = $validator->validated();
 
-    $promo_input = promo::create([
+    $promo_input = Promo::create([
         'discount' => $validated['discount'],
         'description' => $validated['description'],
         'price' => $validated['price'],
@@ -78,9 +78,9 @@ public function promo_show(Request $request, Promo $promo){
      * @param Promo
      * @return \Illuminate\Http\Response
      */
-public function promo_update(Request $request, promo $promo){
+public function promo_update(Request $request, Promo $promo){
     $validator = validator($request->all(), [
-        "discount" => "required|decimal",
+        "discount" => "required",
         "description" => "required|string",
         "price" => "required|integer",
         "promo_name" => "required|string",
@@ -97,7 +97,7 @@ public function promo_update(Request $request, promo $promo){
     
     $validated = $validator->validated();
 
-    $promo->update([
+    $promo_input = Promo::update([
         'discount' => $validated['discount'],
         'description' => $validated['description'],
         'price' => $validated['price'],
@@ -108,7 +108,7 @@ public function promo_update(Request $request, promo $promo){
     return response()->json([
         "ok" => true,
         "message" => "Promo Info has been Updated!",
-        "data" => $promo
+        "data" => $promo_input
     ], 200);
 }
 /** 
@@ -118,7 +118,7 @@ public function promo_update(Request $request, promo $promo){
      * @param Promo
      * @return \Illuminate\Http\Response
      */
-    public function promo_destroy(Request $request, promo $promo){
+    public function promo_destroy(Request $request, Promo $promo){
         $promo->delete();
         return response()->json([
             "ok" => true,
