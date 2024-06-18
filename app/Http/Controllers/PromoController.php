@@ -67,7 +67,7 @@ public function promo_show(Request $request, Promo $promo){
     return response()->json([
         "ok" => true,
         "message" => "Promos Info has been retrieved!",
-        "data" => $promo
+        "data" => $promo_input
     ], 200);
 }
 

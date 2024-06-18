@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DentistController extends Controller
 {
      /**
-     * Retrieve the user info using bearer token
+     * Retrieve the Dentist info using bearer token
      * GET: /api/checkToken
      * @param Request
      * @return \Illuminate\Http\Response 
@@ -54,25 +54,25 @@ public function dentist_store(Request $request){
 }
 
 /** 
-     * Retrieve specific doctor using id
-     * GET: /api/doctors/{doctor}
+     * Retrieve specific dentist using id
+     * GET: /api/dentist/{dentist}
      * @param Request
-     * @param Doctor
+     * @param Dentist
      * @return \Illuminate\Http\Response
      */
-public function dentist_show(Request $request, Doctor $dentist){
+public function dentist_show(Request $request, Dentist $dentist){
     return response()->json([
         "ok" => true,
-        "message" => "Doctors Info has been retrieved!",
-        "data" => $dentist
+        "message" => "Dentist Info has been retrieved!",
+        "data" => $dentist_input
     ], 200);
 }
 
 /** 
-     * Update specific doctor using inputs from request and id from URI
-     * PATCH: /api/doctors/{doctor}
+     * Update specific dentist using inputs from request and id from URI
+     * PATCH: /api/dentists/{dentist}
      * @param Request
-     * @param Doctor
+     * @param Dentist
      * @return \Illuminate\Http\Response
      */
 public function dentist_update(Request $request, Dentist $dentist){
@@ -92,7 +92,7 @@ public function dentist_update(Request $request, Dentist $dentist){
     
     $validated = $validator->validated();
 
-    $dentist->update([
+    $dentist_input = Dentist::update([
         'name' => $validated['name'],
         'address' => $validated['address'],
         'years_of_service' => $validated['years_of_service'],
@@ -100,13 +100,13 @@ public function dentist_update(Request $request, Dentist $dentist){
 
     return response()->json([
         "ok" => true,
-        "message" => "Doctor Info has been Updated!",
-        "data" => $dentist
+        "message" => "Dentist Info has been Updated!",
+        "data" => $dentist_input
     ], 200);
 }
 /** 
-     * Delete specific user using id from URI
-     * DELETE: /api/users/{user}
+     * Delete specific dentist using id from URI
+     * DELETE: /api/dentists/{dentist}
      * @param Request
      * @param Dentist
      * @return \Illuminate\Http\Response
@@ -115,7 +115,7 @@ public function dentist_update(Request $request, Dentist $dentist){
         $dentist->delete();
         return response()->json([
             "ok" => true,
-            "message" => "Doctor has been Terminated!"
+            "message" => "Dentist has been Terminated!"
         ], 200);
     }
 }

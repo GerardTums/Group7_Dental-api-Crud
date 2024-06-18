@@ -13,7 +13,7 @@ class AppointmentController extends Controller
      * @param Request
      * @return \Illuminate\Http\Response 
      */
-    public function appoitment_index(Request $request){
+    public function appointment_index(Request $request){
         return response()->json([
             "ok" => true,
             "message" => "Appointment Info has been retrieved!",
@@ -28,7 +28,7 @@ public function appointment_store(Request $request){
         "procedure_id"=>"exists:procedure,procedure_id",
         "treatment_date" => "required|date",
         "treatment_time" => "required|time",
-        "rescedule" => "sometimes|date"
+        "reshcedule" => "sometimes|date"
     ]);
 
     if($validator->fails()){
@@ -48,7 +48,7 @@ public function appointment_store(Request $request){
         'procedure_id'=> $validated['procedure_id'],
         'treatment_date'=> $validated['treatment_date'],
         'treatment_time'=> $validated['treatment_time'],
-        'rescedule'=> $validated['rescedule'],
+        'reshcedule'=> $validated['rescedule'],
    ]);
 
     return response()->json([
@@ -69,7 +69,7 @@ public function appointment_show(Request $request, Doctor $doctor){
     return response()->json([
         "ok" => true,
         "message" => "Appointment Info has been retrieved!",
-        "data" => $doctor
+        "data" => $appointment_input
     ], 200);
 }
 

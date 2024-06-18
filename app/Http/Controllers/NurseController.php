@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class NurseController extends Controller
 {
    /**
-     * Retrieve the user info using bearer token
+     * Retrieve the nurse info using bearer token
      * GET: /api/checkToken
      * @param Request
      * @return \Illuminate\Http\Response 
@@ -22,7 +22,7 @@ class NurseController extends Controller
     }
 public function nurse_store(Request $request){
     $validator = validator($request->all(), [
-        "nurse_id"=>"exists:nurse,nurse_id",
+        "user_id"=>"exists:nurse,nurse_id",
         "name" => "required|min:4|string",
         "address" => "required|string",
         "years_of_service" => "required|integer"
@@ -39,6 +39,7 @@ public function nurse_store(Request $request){
     $validated = $validator->validated();
 
     $nurse_input = Nurse::create([
+        'user_id' => $validated['user_id'], 
         'name' => $validated['name'],
         'address' => $validated['address'],
         'years_of_service' => $validated['years_of_service'],
@@ -105,8 +106,8 @@ public function nurse_update(Request $request, Nurse $nurse){
     ], 200);
 }
 /** 
-     * Delete specific user using id from URI
-     * DELETE: /api/users/{user}
+     * Delete specific nurse using id from URI
+     * DELETE: /api/nurses/{nurse}
      * @param Request
      * @param Nurse
      * @return \Illuminate\Http\Response
