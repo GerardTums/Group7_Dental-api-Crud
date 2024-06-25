@@ -22,7 +22,7 @@ class NurseController extends Controller
     }
 public function nurse_store(Request $request){
     $validator = validator($request->all(), [
-        "user_id"=>"exists:nurse,nurse_id",
+        "user_id"=>"exists:profiles,user_id|required",
         "name" => "required|min:4|string",
         "address" => "required|string",
         "years_of_service" => "required|integer"

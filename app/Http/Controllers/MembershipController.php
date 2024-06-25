@@ -21,8 +21,8 @@ class MembershipController extends Controller
     }
 public function membership_store(Request $request){
     $validator = validator($request->all(), [
-        "promo_id"=>"exists:promo,promo_id",
-        "profile_id"=>"exists:profile,profile_id",
+        "promo_id"=>"exists:promos,id|required",
+        "profile_id"=>"exists:profiles,user_id|required",
      
        
     ]);
@@ -75,7 +75,7 @@ public function membership_show(Request $request, Doctor $doctor){
      */
 public function membership_update(Request $request, Doctor $doctor){
     $validator = validator($request->all(), [
-        "promo_id"=>"exists:promo,promo_id",
+        "promo_id"=>"exists:promo,id",
         "description"=>"required|string",
         "cost" => "required|integer"
     ]);

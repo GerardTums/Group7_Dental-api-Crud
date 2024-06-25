@@ -21,7 +21,7 @@ class ProcedureController extends Controller
     }
 public function procedure_store(Request $request){
     $validator = validator($request->all(), [
-        "promo_id"=>"exists:promo,promo_id",
+        "promo_id"=>"exists:promos,id|required",
         "description"=>"required|string",
         "cost" => "required|integer"
        
@@ -75,7 +75,7 @@ public function procedure_show(Request $request, Doctor $doctor){
      */
 public function procedure_update(Request $request, Doctor $doctor){
     $validator = validator($request->all(), [
-        "promo_id"=>"exists:promo,promo_id",
+        "promo_id"=>"exists:promos,id|required",
         "description"=>"required|string",
         "cost" => "required|integer"
     ]);

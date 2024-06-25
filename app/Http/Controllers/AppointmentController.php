@@ -82,10 +82,10 @@ public function appointment_show(Request $request, Doctor $doctor){
      */
 public function appointment_update(Request $request, Doctor $doctor){
     $validator = validator($request->all(), [
-        "dentist_id"=>"exists:dentist,dentist_id",
-        "nurse_id"=>"exists:nurse,nurse_id",
-        "user_id"=>"exists:user,user_id",
-        "procedure_id"=>"exists:procedure,procedure_id",
+        "dentist_id"=>"exists:dentists,id|required",
+        "nurse_id"=>"exists:nurses,id|required",
+        "user_id"=>"exists:users,id|required",
+        "procedure_id"=>"exists:procedures,id|required",
         "treatment_date" => "required|date",
         "treatment_time" => "required|time",
         "rescedule" => "sometimes|date"
@@ -97,7 +97,10 @@ public function appointment_update(Request $request, Doctor $doctor){
             "message" => "Request didn't pass the validation.",
             "errors" => $validator->errors()
         ], 400);
+
+       
     }
+    
     $validated = $validator->validated();
     $appointment_input = Appointment::create([
         'dentist_id'=> $validated['dentist_id'],
