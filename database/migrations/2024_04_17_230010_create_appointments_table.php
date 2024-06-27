@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('procedure_id');
             $table->foreign('procedure_id')->references('id')->on('procedures');
-            $table->date('rescedule')->nullable();
+            
         });
     }
 
