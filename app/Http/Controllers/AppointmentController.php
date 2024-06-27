@@ -84,7 +84,7 @@ class AppointmentController extends Controller
      * @param Appointment
      * @return \Illuminate\Http\Response
      */
-    public function appointment_update(Request $request, Doctor $appointment)
+    public function appointment_update(Request $request, Appointment $appointment)
     {
         $validator = validator($request->all(), [
             "dentist_id" => "exists:dentists,id|required",
