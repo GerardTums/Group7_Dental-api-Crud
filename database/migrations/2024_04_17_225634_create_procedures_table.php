@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('promo_id')->references('id')->on('promos');
             $table->string('description');
             $table->integer('cost');
+            $table->timestamps();
         });
     }
 

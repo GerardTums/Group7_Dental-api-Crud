@@ -64,7 +64,7 @@ public function dentist_show(Request $request, Dentist $dentist){
     return response()->json([
         "ok" => true,
         "message" => "Dentist Info has been retrieved!",
-        "data" => $dentist_input
+        "data" => $dentist
     ], 200);
 }
 
