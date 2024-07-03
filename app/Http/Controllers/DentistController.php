@@ -24,7 +24,7 @@ public function dentist_store(Request $request){
     $validator = validator($request->all(), [
         "name" => "required|min:4|string",
         "address" => "required|string",
-        "years_of_service" => "required|integer"
+        "hire_date" => "required|date"
     ]);
 
     if($validator->fails()){
@@ -43,7 +43,7 @@ public function dentist_store(Request $request){
     $dentist_input = Dentist::create([
         'name' => $validated['name'],
         'address' => $validated['address'],
-        'years_of_service' => $validated['years_of_service'],
+        'hire_date' => $validated['hire_date'],
     ]);
 
     return response()->json([
@@ -79,7 +79,7 @@ public function dentist_update(Request $request, Dentist $dentist){
     $validator = validator($request->all(), [
         "name" => "required|min:4|string",
         "address" => "required|string",
-        "years_of_service" => "required|integer"
+        "hire_date" => "required|date"
     ]);
 
     if($validator->fails()){
@@ -92,16 +92,17 @@ public function dentist_update(Request $request, Dentist $dentist){
     
     $validated = $validator->validated();
 
-    $dentist_input = Dentist::update([
+    // Update the attributes of the $dentist instance
+    $dentist->update([
         'name' => $validated['name'],
         'address' => $validated['address'],
-        'years_of_service' => $validated['years_of_service'],
+        'hire_date' => $validated['hire_date'],
     ]);
 
     return response()->json([
         "ok" => true,
         "message" => "Dentist Info has been Updated!",
-        "data" => $dentist_input
+        "data" => $dentist  // Return the updated $dentist object
     ], 200);
 }
 /** 

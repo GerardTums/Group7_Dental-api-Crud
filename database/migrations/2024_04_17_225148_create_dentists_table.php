@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('name')->unique();
             $table->string('address')->unique();
-            $table->integer('years_of_service');
+            $table->date('hire_date');
             $table->date('updated_at');
             $table->timestamp('created_at');
           

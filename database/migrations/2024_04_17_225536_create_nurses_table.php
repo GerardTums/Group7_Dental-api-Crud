@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->unique();
             $table->string('address')->unique();
-            $table->integer('years_of_service');
+            $table->date('hire_date');
             $table->date('updated_at');
             $table->timestamp('created_at');
             

@@ -57,10 +57,3 @@ Route::prefix("procedures")->group(function (){
     Route::post("/", [App\Http\Controllers\ProcedureController::class, "procedure_store"]);
 });
 
-Route::prefix("memberships")->group(function (){
-    Route::get("/", [App\Http\Controllers\MembershipController::class, "memberships_index"]);
-    Route::get("/{memberships}", [App\Http\Controllers\MembershipController::class, "memberships_show"]);
-    Route::delete("/{memberships}", [App\Http\Controllers\MembershipController::class, "memberships_destroy"]);
-    Route::patch("/{memberships}", [App\Http\Controllers\MembershipController::class, "memberships_update"]);
-    Route::post("/", [App\Http\Controllers\MembershipController::class, "memberships_store"]);
-});

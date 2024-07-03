@@ -34,7 +34,7 @@ class NurseController extends Controller
             "user_id" => "exists:profiles,user_id|required",
             "name" => "required|min:4|string",
             "address" => "required|string",
-            "years_of_service" => "required|integer"
+            "hire_date" => "required|date"
         ]);
 
         if ($validator->fails()) {
@@ -51,7 +51,7 @@ class NurseController extends Controller
             'user_id' => $validated['user_id'], 
             'name' => $validated['name'],
             'address' => $validated['address'],
-            'years_of_service' => $validated['years_of_service'],
+            'hire_date' => $validated['hire_date'],
         ]);
 
         return response()->json([
@@ -90,7 +90,7 @@ class NurseController extends Controller
             "user_id" => "exists:profiles,user_id|required",
             "name" => "required|min:4|string",
             "address" => "required|string",
-            "years_of_service" => "required|integer"
+            "hire_date" => "required|date"        
         ]);
 
         if ($validator->fails()) {
@@ -107,7 +107,7 @@ class NurseController extends Controller
             'user_id' => $validated['user_id'], 
             'name' => $validated['name'],
             'address' => $validated['address'],
-            'years_of_service' => $validated['years_of_service'],
+            'hire_date' => $validated['hire_date'],
         ]);
 
         return response()->json([
