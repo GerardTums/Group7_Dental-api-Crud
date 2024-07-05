@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('dentists', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name')->unique();
-            $table->string('address')->unique();
+            $table->string('name');
+            $table->string('address');
             $table->date('hire_date');
             $table->date('updated_at');
             $table->timestamp('created_at');

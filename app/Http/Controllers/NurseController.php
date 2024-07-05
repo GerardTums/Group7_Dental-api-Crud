@@ -10,7 +10,7 @@ class NurseController extends Controller
 {
     /**
      * Retrieve the nurse info using bearer token
-     * GET: /api/checkToken
+     * GET: /api/nurse
      * @param Request
      * @return \Illuminate\Http\Response 
      */
@@ -19,6 +19,8 @@ class NurseController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Nurses info has been retrieved!",
+            "data" => Nurse::all()
+
         ], 200);
     }
 

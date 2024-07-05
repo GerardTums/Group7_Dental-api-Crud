@@ -19,6 +19,7 @@ class ProcedureController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Procedure info has been retrieved!",
+            "data" => Procedure::all()
         ], 200);
     }
 

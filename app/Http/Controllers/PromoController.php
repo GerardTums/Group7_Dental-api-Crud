@@ -19,6 +19,7 @@ class PromoController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Promo info has been retrieved!",
+            "data" => Promo::all()
         ], 200);
     }
 

@@ -19,6 +19,8 @@ class AppointmentController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Appointment Info has been retrieved!",
+            "data" => Appointment::all()
+
         ], 200);
     }
 

@@ -17,7 +17,7 @@ class DentistController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Dentist Info has been retrieved!",
-            
+            "data" => Dentist::all()
         ], 200);
     }
 public function dentist_store(Request $request){
