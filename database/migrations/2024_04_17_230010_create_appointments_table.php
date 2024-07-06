@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id()->primary();
             $table->timestamps();
+            $table->string('name'); 
+            $table->string('address');
             $table->date('treatment_date');
             $table->time('treatment_time');
             $table->unsignedBigInteger('dentist_id');
             $table->foreign('dentist_id')->references('id')->on('dentists');
             $table->unsignedBigInteger('nurse_id');
             $table->foreign('nurse_id')->references('id')->on('nurses');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('procedure_id');
             $table->foreign('procedure_id')->references('id')->on('procedures');
             

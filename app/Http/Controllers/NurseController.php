@@ -33,7 +33,6 @@ class NurseController extends Controller
     public function nurse_store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id" => "exists:profiles,user_id|required",
             "name" => "required|min:4|string",
             "address" => "required|string",
             "hire_date" => "required|date"
@@ -50,7 +49,6 @@ class NurseController extends Controller
         $validated = $validator->validated();
 
         $nurse = Nurse::create([
-            'user_id' => $validated['user_id'], 
             'name' => $validated['name'],
             'address' => $validated['address'],
             'hire_date' => $validated['hire_date'],
@@ -89,7 +87,6 @@ class NurseController extends Controller
     public function nurse_update(Request $request, Nurse $nurse)
     {
         $validator = Validator::make($request->all(), [
-            "user_id" => "exists:profiles,user_id|required",
             "name" => "required|min:4|string",
             "address" => "required|string",
             "hire_date" => "required|date"        
@@ -106,7 +103,6 @@ class NurseController extends Controller
         $validated = $validator->validated();
 
         $nurse->update([
-            'user_id' => $validated['user_id'], 
             'name' => $validated['name'],
             'address' => $validated['address'],
             'hire_date' => $validated['hire_date'],

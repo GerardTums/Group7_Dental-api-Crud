@@ -9,8 +9,7 @@ use App\Rules\Time;
 class AppointmentController extends Controller
 {
     /**
-     * Retrieve the user info using bearer token
-     * GET: /api/checkToken
+     * GET: /api/appointments
      * @param Request
      * @return \Illuminate\Http\Response 
      */
@@ -27,9 +26,10 @@ class AppointmentController extends Controller
     public function appointment_store(Request $request)
     {
         $validator = validator($request->all(), [
+            "name" => "required|string",
+            "address" => "required|string",
             "dentist_id" => "exists:dentists,id|required",
-            "nurse_id" => "exists:nurses,id|required",
-            "user_id" => "exists:users,id|required",
+            "nurse_id" => "exists:nurses,id|required",          
             "procedure_id" => "exists:procedures,id|required",
             "treatment_date" => "required|date",
             "treatment_time" => ["required", new Time],
@@ -47,9 +47,10 @@ class AppointmentController extends Controller
         $validated = $validator->validated();
 
         $appointment_input = Appointment::create([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
             'dentist_id' => $validated['dentist_id'],
             'nurse_id' => $validated['nurse_id'],
-            'user_id' => $validated['user_id'],
             'procedure_id' => $validated['procedure_id'],
             'treatment_date' => $validated['treatment_date'],
             'treatment_time' => $validated['treatment_time'],
@@ -89,9 +90,10 @@ class AppointmentController extends Controller
     public function appointment_update(Request $request, Appointment $appointment)
     {
         $validator = validator($request->all(), [
+            "name" => "required|string",
+            "address" => "required|string",
             "dentist_id" => "exists:dentists,id|required",
             "nurse_id" => "exists:nurses,id|required",
-            "user_id" => "exists:users,id|required",
             "procedure_id" => "exists:procedures,id|required",
             "treatment_date" => "required|date",
             "treatment_time" => ["required", new Time],
@@ -108,9 +110,10 @@ class AppointmentController extends Controller
 
         $validated = $validator->validated();
         $appointment_input = Appointment::create([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
             'dentist_id' => $validated['dentist_id'],
             'nurse_id' => $validated['nurse_id'],
-            'user_id' => $validated['user_id'],
             'procedure_id' => $validated['procedure_id'],
             'treatment_date' => $validated['treatment_date'],
             'treatment_time' => $validated['treatment_time'],
