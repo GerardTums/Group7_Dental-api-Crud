@@ -20,7 +20,7 @@ Route::prefix("users")->group(function () {
 Route::prefix("appointments")->group(function (){
     Route::get("/", [App\Http\Controllers\AppointmentController::class, "appointment_index"]);
     Route::get("/{appointment}", [App\Http\Controllers\AppointmentController::class, "appointment_show"]);
-    Route::delete("/{appoitment}", [App\Http\Controllers\AppointmentController::class, "appointment_destroy"]);
+    Route::delete("/{appointment}", [App\Http\Controllers\AppointmentController::class, "appointment_destroy"]);
     Route::patch("/{appointment}", [App\Http\Controllers\AppointmentController::class, "appointment_update"]);
     Route::post("/", [App\Http\Controllers\AppointmentController::class, "appointment_store"]);
 });
@@ -51,9 +51,9 @@ Route::prefix("promos")->group(function (){
 
 Route::prefix("procedures")->group(function (){
     Route::get("/", [App\Http\Controllers\ProcedureController::class, "procedure_index"]);
-    Route::get("/{procedures}", [App\Http\Controllers\ProcedureController::class, "procedure_show"]);
-    Route::delete("/{procedures}", [App\Http\Controllers\ProcedureController::class, "procedure_destroy"]);
-    Route::patch("/{procedures}", [App\Http\Controllers\ProcedureController::class, "procedure_update"]);
+    Route::get("/{procedure}", [App\Http\Controllers\ProcedureController::class, "procedure_show"]);
+    Route::delete("/{procedure}", [App\Http\Controllers\ProcedureController::class, "procedure_destroy"]);
+    Route::patch("/{procedure}", [App\Http\Controllers\ProcedureController::class, "procedure_update"]);
     Route::post("/", [App\Http\Controllers\ProcedureController::class, "procedure_store"]);
 });
 

@@ -31,7 +31,7 @@ class ProcedureController extends Controller
      */
     public function procedure_store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = validator($request->all(), [
             "promo_id" => "exists:promos,id|required",
             "description" => "required|string",
             "cost" => "required|integer",
@@ -85,7 +85,7 @@ class ProcedureController extends Controller
      */
     public function procedure_update(Request $request, Procedure $procedure)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = validator($request->all(), [
             "promo_id" => "exists:promos,id|required",
             "description" => "required|string",
             "cost" => "required|integer",

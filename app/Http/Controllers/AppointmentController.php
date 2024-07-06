@@ -109,7 +109,7 @@ class AppointmentController extends Controller
         }
 
         $validated = $validator->validated();
-        $appointment_input = Appointment::create([
+        $appointment -> update([
             'name' => $validated['name'],
             'address' => $validated['address'],
             'dentist_id' => $validated['dentist_id'],
@@ -123,7 +123,7 @@ class AppointmentController extends Controller
         return response()->json([
             "ok" => true,
             "message" => "Appointment Info has been Updated!",
-            "data" => $appointment_input
+            "data" => $appointment
         ], 200);
     }
 
